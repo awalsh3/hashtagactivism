@@ -11,9 +11,11 @@
     <%= javascript_importmap_tags %>
   </head>
 
-  <body class="bg-black">
-    <main class="container mx-auto mt-28 px-5 flex">
+  <body>
+    <main>
+      <%= render 'shared/navbar' %>
       <%= yield %>
+      <%= render 'shared/footer' %>
     </main>
   </body>
 </html>
