@@ -9,16 +9,16 @@
         <p class="text-xl text-gray-500">Odio nisi, lectus dis nulla. Ultrices maecenas vitae rutrum dolor ultricies donec risus sodales. Tempus quis et.</p>
       </div>
       <ul role="list" class="space-y-12 sm:grid sm:grid-cols-2 sm:gap-x-6 sm:gap-y-12 sm:space-y-0 lg:grid-cols-3 lg:gap-x-8">
+      <% @causes.each do |cause| %>
         <li>
           <div class="space-y-4">
             <div class="aspect-w-3 aspect-h-2">
-              <img class="rounded-lg object-cover shadow-lg" src="https://images.unsplash.com/photo-1517841905240-472988babdf9?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=8&w=1024&h=1024&q=80" alt="">
+            <%= cl_image_tag cause.photo.key, class: "rounded-lg  shadow-lg", :gravity=>"cld-decompose_tile", :crop=>"crop" %>
             </div>
-            <% @causes.each do |cause| %>
             <div class="space-y-2">
               <div class="space-y-1 text-lg font-medium leading-6">
                 <h3><%= cause.name %></h3>
-                <p class="text-indigo-600"><%= cause.description %></p>
+                <p class="text-gray-500"><%= cause.description %></p>
               </div>
               <% end %>
             </div>
