@@ -12,7 +12,11 @@
         <li>
           <div class="space-y-4">
             <div class="aspect-w-3 aspect-h-2">
-            <%= cl_image_tag cause.photo.key, class: "rounded-lg  shadow-lg", :gravity=>"cld-decompose_tile", :crop=>"crop" %>
+               <% if cause.photo.attached? %>
+                <%= cl_image_tag cause.photo.key, class: "rounded-lg  shadow-lg", :gravity=>"cld-decompose_tile", :crop=>"crop" %>
+               <% else %>
+                <%= image_tag "12.png", class: "rounded-lg  shadow-lg" %>
+              <% end %>
             </div>
             <div class="space-y-2">
               <div class="space-y-1 text-lg font-medium leading-6">
