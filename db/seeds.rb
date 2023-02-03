@@ -83,5 +83,52 @@ task7 = Task.create!(
   url: 'https://www.change.org/t/black-lives-matter-en-us'
 )
 
+task11 = Task.create!(
+  name: 'Share the trailer',
+  content: "Share the trailer for Seaspiracy to social media to raise awareness of the film and its message",
+  cause_id: cause2.id,
+  time: 2,
+  url: 'https://www.youtube.com/watch?v=1Q5CXN7soQg'
+)
+
+task12 = Task.create!(
+  name: 'Sign this petition for protection of the ocean',
+  content: "Sign this petition to call on the government to make a real difference to our oceans",
+  cause_id: cause2.id,
+  time: 5,
+  url: 'https://action.greenpeace.org.uk/l/854853/2021-04-23/qwm74?source=UN&subsource=OCMRGLPEUN02GK&utm_source=bsd&utm_medium=redirect&utm_campaign=post%20pardot%20launch%20redirect'
+)
+
+task13 = Task.create!(
+  name: 'Review resources to become an ocean activist',
+  content: 'Inspired by Seaspiracy? Review resources to become an ocean activist',
+  cause_id: cause2.id,
+  time: 15,
+  url: 'https://www.bigblueoceancleanup.org/become-an-ocean-activist'
+)
+
+task14 = Task.create!(
+  name: 'Check out Sea7, a live streamed ocean activist training camp',
+  content: 'A wide range of resources to review following the G7 summit, and actions that can be taken',
+  cause_id: cause2.id,
+  time: 60,
+  url: 'https://sea7.finisterre.com/'
+)
+
+task15 = Task.create!(
+  name: 'Research local activism',
+  content: 'Research ocean related activism close to you',
+  cause_id: cause2.id,
+  time: 10,
+  url: 'https://www.bigblueoceancleanup.org/become-an-ocean-activist'
+)
+
+task16 = Task.create!(
+  name: 'Education petition',
+  content: 'Sign this petition to push for education on ocean issues',
+  cause_id: cause2.id,
+  time: 10,
+  url: 'https://www.bigblueoceancleanup.org/become-an-ocean-activist'
+)
 
 puts 'Seed: Finished seeding!'
