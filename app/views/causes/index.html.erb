@@ -5,28 +5,30 @@
     <div class="space-y-12">
       <div class="space-y-5 sm:space-y-4 md:max-w-xl lg:max-w-3xl xl:max-w-none">
         <h2 class="text-3xl font-bold tracking-tight sm:text-4xl">Step 1. Choose a Cause </h2>
-        <p class="text-xl text-gray-500">Select a cause or multiple cause that you want to help. You can add them to your dashboard. New causes are added weekly.</p>
+        <p class="text-xl text-gray-500">Select a cause that you want to help. You can add them to your dashboard. New causes are added weekly.</p>
       </div>
       <ul role="list" class="space-y-12 sm:grid sm:grid-cols-2 sm:gap-x-6 sm:gap-y-12 sm:space-y-0 lg:grid-cols-3 lg:gap-x-8">
       <% @causes.each do |cause| %>
         <li>
+        <%= link_to choose_cause_path(cause), remote: true do %>
           <div class="space-y-4">
             <div class="aspect-w-3 aspect-h-2">
                <% if cause.photo.attached? %>
                 <%= cl_image_tag cause.photo.key, class: "rounded-lg  shadow-lg object-scale-down", :gravity=>"cld-decompose_tile", :crop=>"crop" %>
                <% else %>
                 <%= image_tag "12.png", class: "rounded-lg  shadow-lg" %>
-              <% end %>
+               <% end %>
             </div>
             <div class="space-y-2">
               <div class="space-y-1 text-lg font-medium leading-6">
                 <h3><%= cause.name %></h3>
                 <p class="text-gray-500"><%= cause.description %></p>
               </div>
-              <% end %>
             </div>
           </div>
+          <% end %>
         </li>
+        <% end %>
       </ul>
 
 
@@ -110,9 +112,14 @@
             </div>
           </li>
         </ul>
+
       </div>
       <div class="container flex p-2 items-center">
+        <% if @cause.nil? %>
         <%= link_to "Get started", causes_path, class: "inline-flex items-center rounded-md border border-transparent bg-emerald-300 px-8 py-3 text-base font-medium text-white hover:bg-emerald-400 md:py-4 md:px-10 md:text-lg" %>
+         <% else %>
+         <%= link_to "Get started", cause_path, class: "inline-flex items-center rounded-md border border-transparent bg-emerald-300 px-8 py-3 text-base font-medium text-white hover:bg-emerald-400 md:py-4 md:px-10 md:text-lg" %>
+        <% end %>
       </div>
     </div>
   </div>
