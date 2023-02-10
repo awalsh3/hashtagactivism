@@ -1,129 +1,65 @@
-<div class="container p-4 m-4">
+<div class="container p-4 m-4 outline-dashed">
+  <div class="grid grid-cols-6 gap-4 outline-dotted">
 
-<div class="border-b border-gray-200 pb-5">
-  <h3 class="text-2xl font-medium leading-6 text-gray-900">Tasks for <%= @cause.name %></h3>
-</div>
-
-<!-- TIME -->
-      <div class="space-y-5 sm:space-y-4 md:max-w-xl lg:max-w-3xl xl:max-w-none">
-        <h2 class="text-3xl font-bold tracking-tight sm:text-4xl">Step 2.  How much time do you have? </h2>
-        <p class="text-xl text-gray-500">We know you're busy that's why we have created actionable tasks that are divided into durations so you can complete a task in the time you have.</p>
+    <div class="col-start-2 col-span-4 outline-dashed">
+       <div class="mx-auto max-w-2xl text-center outline-dashed">
+        <h2 class="text-4xl font-bold tracking-tight text-gray-900 sm:text-6xl">Tasks for <%= @cause.name %></h2>
+        <p class="mt-6 text-lg leading-8 text-gray-600"><%= @cause.description %></p>
       </div>
+    </div>
 
-      <div>
-        <ul role="list" class="mt-3 grid grid-cols-1 gap-5 sm:grid-cols-2 sm:gap-6 lg:grid-cols-4">
-          <li class="col-span-1 flex rounded-md shadow-sm">
-            <div class="flex-shrink-0 flex items-center justify-center w-16 bg-emerald-100 text-black text-sm font-medium rounded-l-md">
-              <svg class="h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" aria-hidden="true">
-                <path stroke-linecap="round" stroke-linejoin="round" d="M12 6v6h4.5m4.5 0a9 9 0 11-18 0 9 9 0 0118 0z" />
-              </svg>
-            </div>
-            <div class="flex flex-1 items-center justify-between truncate rounded-r-md border-t border-r border-b border-gray-200 bg-white">
-              <div class="flex-1 truncate px-4 py-2 text-sm">
-                <a href="#" class="font-medium text-gray-900 hover:text-gray-600">5 minutes</a>
-                <p class="text-gray-500">I don't have much time</p>
-              </div>
-              <div class="flex-shrink-0 pr-2">
-                <button type="button" class="inline-flex h-8 w-8 items-center justify-center rounded-full bg-white bg-transparent text-gray-400 hover:text-gray-500 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2">
-                </button>
-              </div>
-            </div>
-          </li>
+    <div class="col-start-1 col-end-4 outline-dashed">
+        <%= render "shared/task_filter" %>
 
-          <li class="col-span-1 flex rounded-md shadow-sm">
-           <div class="flex-shrink-0 flex items-center justify-center w-16 bg-emerald-100 text-black text-sm font-medium rounded-l-md">
-              <svg class="h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" aria-hidden="true">
-                <path stroke-linecap="round" stroke-linejoin="round" d="M12 6v6h4.5m4.5 0a9 9 0 11-18 0 9 9 0 0118 0z" />
-              </svg>
-            </div>
-            <div class="flex flex-1 items-center justify-between truncate rounded-r-md border-t border-r border-b border-gray-200 bg-white">
-              <div class="flex-1 truncate px-4 py-2 text-sm">
-                <a href="#" class="font-medium text-gray-900 hover:text-gray-600">10 minutes</a>
-                <p class="text-gray-500">I have a little time</p>
+      <div class="bg-white p-2 outline-dashed">
+        <div class="mx-auto max-w-2xl text-left outline-dashed">
+          <% @cause.tasks.each do |task| %>
+          <div class="divide-y divide-gray-200 m-4 p-4 overflow-hidden rounded-lg bg-gray-200 shadow sm:grid sm:grid-cols-1 sm:gap-px sm:divide-y-0">
+            <div class="rounded-tl-lg rounded-tr-lg sm:rounded-tr-none relative group bg-white p-6 focus-within:ring-2 focus-within:ring-inset focus-within:ring-emerald-500">
+              <div>
+                <!-- <span class="rounded-lg inline-flex p-3 bg-teal-50 text-teal-700 ring-4 ring-white"> -->
+                  <input type="checkbox" class="h-8 w-8 rounded border-gray-300 text-emerald-600 focus:ring-emerald-500">
+                <!-- </span> -->
               </div>
-              <div class="flex-shrink-0 pr-2">
-                <button type="button" class="inline-flex h-8 w-8 items-center justify-center rounded-full bg-white bg-transparent text-gray-400 hover:text-gray-500 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2">
-                </button>
-              </div>
+              <div class="mt-8">
+                <h3 class="text-lg font-medium">
+                <%= link_to task.url, target: "_blank", class: "focus:outline-none" do %>
+                    <!-- Extend touch target to entire panel -->
+                    <span class="absolute inset-0" aria-hidden="true"></span>
+                    <%= task.name %>
+                </h3>
+                <p class="mt-2 text-sm text-gray-500"><%= task.content %></p>
+                <p class="mt-2 text-sm text-gray-500"><%= task.time %> minutes</p>
+                <% end %>
+             </div>
+              <span class="pointer-events-none absolute top-6 right-6 text-gray-300 group-hover:text-gray-400" aria-hidden="true">
+                <svg class="h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 24 24">
+                  <path d="M20 4h1a1 1 0 00-1-1v1zm-1 12a1 1 0 102 0h-2zM8 3a1 1 0 000 2V3zM3.293 19.293a1 1 0 101.414 1.414l-1.414-1.414zM19 4v12h2V4h-2zm1-1H8v2h12V3zm-.707.293l-16 16 1.414 1.414 16-16-1.414-1.414z" />
+                </svg>
+              </span>
             </div>
-          </li>
+          </div>
+          <% end %>
+        </div>
+    </div>
+  </div>
 
-          <li class="col-span-1 flex rounded-md shadow-sm">
-          <div class="flex-shrink-0 flex items-center justify-center w-16 bg-emerald-100 text-black text-sm font-medium rounded-l-md">
-              <svg class="h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" aria-hidden="true">
-                <path stroke-linecap="round" stroke-linejoin="round" d="M12 6v6h4.5m4.5 0a9 9 0 11-18 0 9 9 0 0118 0z" />
-              </svg>
-            </div>
-            <div class="flex flex-1 items-center justify-between truncate rounded-r-md border-t border-r border-b border-gray-200 bg-white">
-              <div class="flex-1 truncate px-4 py-2 text-sm">
-                <a href="#" class="font-medium text-gray-900 hover:text-gray-600">30 minutes</a>
-                <p class="text-gray-500">I have some time</p>
-              </div>
-              <div class="flex-shrink-0 pr-2">
-                <button type="button" class="inline-flex h-8 w-8 items-center justify-center rounded-full bg-white bg-transparent text-gray-400 hover:text-gray-500 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2">
-                </button>
-              </div>
-            </div>
-          </li>
+    <div class="col-end-7 col-span-3  outline-dashed">
+     <%= cl_image_tag @cause.photo.key, :gravity=>"cld-decompose_tile", :crop=>"crop" %>
+    </div>
 
-          <li class="col-span-1 flex rounded-md shadow-sm">
-            <div class="flex-shrink-0 flex items-center justify-center w-16 bg-emerald-100 text-black text-sm font-medium rounded-l-md">
-              <svg class="h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" aria-hidden="true">
-                <path stroke-linecap="round" stroke-linejoin="round" d="M12 6v6h4.5m4.5 0a9 9 0 11-18 0 9 9 0 0118 0z" />
-              </svg>
-            </div>
-            <div class="flex flex-1 items-center justify-between truncate rounded-r-md border-t border-r border-b border-gray-200 bg-white">
-              <div class="flex-1 truncate px-4 py-2 text-sm">
-                <a href="#" class="font-medium text-gray-900 hover:text-gray-600">60 minutes</a>
-                <p class="text-gray-500">I have an hour, let's do it</p>
-              </div>
-              <div class="flex-shrink-0 pr-2">
-                <button type="button" class="inline-flex h-8 w-8 items-center justify-center rounded-full bg-white bg-transparent text-gray-400 hover:text-gray-500 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2">
-                </button>
-              </div>
-            </div>
-          </li>
-        </ul>
-
+    <div class="col-start-1 col-end-7 outline-dashed">
+       <div class="container p-2 m-2">
+        <%= link_to "Go back", cause_path(@cause), class: "inline-flex items-center rounded-md border border-transparent bg-emerald-300 px-8 py-3 text-base font-medium text-white hover:bg-emerald-400 md:py-4 md:px-10 md:text-lg" %>
       </div>
-
-
-<div class="container p-4 m-4">
-  <% @cause.tasks.each do |task| %>
-<div class="divide-y divide-gray-200 m-4 p-4 overflow-hidden rounded-lg bg-gray-200 shadow sm:grid sm:grid-cols-1 sm:gap-px sm:divide-y-0">
-  <div class="rounded-tl-lg rounded-tr-lg sm:rounded-tr-none relative group bg-white p-6 focus-within:ring-2 focus-within:ring-inset focus-within:ring-indigo-500">
-    <div>
-      <span class="rounded-lg inline-flex p-3 bg-teal-50 text-teal-700 ring-4 ring-white">
-        <!-- Heroicon name: outline/clock -->
-        <svg class="h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" aria-hidden="true">
-          <path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75L11.25 15 15 9.75M21 12c0 1.268-.63 2.39-1.593 3.068a3.745 3.745 0 01-1.043 3.296 3.745 3.745 0 01-3.296 1.043A3.745 3.745 0 0112 21c-1.268 0-2.39-.63-3.068-1.593a3.746 3.746 0 01-3.296-1.043 3.745 3.745 0 01-1.043-3.296A3.745 3.745 0 013 12c0-1.268.63-2.39 1.593-3.068a3.745 3.745 0 011.043-3.296 3.746 3.746 0 013.296-1.043A3.746 3.746 0 0112 3c1.268 0 2.39.63 3.068 1.593a3.746 3.746 0 013.296 1.043 3.746 3.746 0 011.043 3.296A3.745 3.745 0 0121 12z" />
-        </svg>
-      </span>
     </div>
-    <div class="mt-8">
-      <h3 class="text-lg font-medium">
-      <%= link_to task.url, target: "_blank", class: "focus:outline-none" do %>
-          <!-- Extend touch target to entire panel -->
-          <span class="absolute inset-0" aria-hidden="true"></span>
-          <%= task.name %>
-        </a>
-      </h3>
-      <p class="mt-2 text-sm text-gray-500"><%= task.content %></p>
-      <p class="mt-2 text-sm text-gray-500"><%= task.url %></p>
-    <% end %>
-    </div>
-    <span class="pointer-events-none absolute top-6 right-6 text-gray-300 group-hover:text-gray-400" aria-hidden="true">
-      <svg class="h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 24 24">
-        <path d="M20 4h1a1 1 0 00-1-1v1zm-1 12a1 1 0 102 0h-2zM8 3a1 1 0 000 2V3zM3.293 19.293a1 1 0 101.414 1.414l-1.414-1.414zM19 4v12h2V4h-2zm1-1H8v2h12V3zm-.707.293l-16 16 1.414 1.414 16-16-1.414-1.414z" />
-      </svg>
-    </span>
+
   </div>
 </div>
-  <% end %>
-<div class="container p-2 m-2">
-  <%= link_to "Go back", cause_path(@cause), class: "inline-flex items-center rounded-md border border-transparent bg-emerald-300 px-8 py-3 text-base font-medium text-white hover:bg-emerald-400 md:py-4 md:px-10 md:text-lg" %>
-</div>
-</div>
-</div>
+
+
+
+
+
 
 
