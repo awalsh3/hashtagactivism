@@ -1,9 +1,14 @@
 class UsersController < ApplicationController
 
   def store_tasks
-    params[:store_tasks][:task_ids].reject(&:blank?).each do |id|
-      Action.create(task_id: id, user_id: current_user.id, completed: true)
-    end
+    # params[:task_ids].reject(&:blank?).each do |id|
+      action = Action.create(task_id: id, user_id: current_user.id, completed: true)
+      if action.sucess?
+        flash.now = "succes!"
+      else
+        flash.now = "no sucess"
+      end
+    # end
 
   end
 

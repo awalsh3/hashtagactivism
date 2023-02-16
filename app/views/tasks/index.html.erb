@@ -40,6 +40,14 @@
               </span>
 
             </div>
+            <!---- FORM FOR collecting task ids --->
+            <%= form_for :store_tasks, url: store_tasks_users_path do |form| %>
+              <%= form.text_field :task_ids %>
+                <div class="container p-2 m-2">
+                  <%= form.submit 'Save', class: "inline-flex items-center rounded-md border border-transparent bg-emerald-300 px-8 py-3 text-base font-medium text-white hover:bg-emerald-400 md:py-4 md:px-10 md:text-lg" %>
+                </div>
+              <% end %>
+              <!---- FORM FOR collecting task ids --->
           </div>
           <% end %>
         </div>
