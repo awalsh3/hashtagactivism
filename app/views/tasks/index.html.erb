@@ -46,6 +46,8 @@
     </div>
   </div>
 
+
+
     <div class="col-end-7 col-span-3  outline-dashed">
      <div class="p-4 m-4">
       <%= cl_image_tag @cause.photo.key, :gravity=>"cld-decompose_tile", :crop=>"crop" %>
@@ -69,7 +71,7 @@
         </ul>
       </div>
 
-    </div>
+
 
     <div class="col-start-1 col-end-7 outline-dashed">
        <div class="container p-2 m-2">
@@ -79,6 +81,17 @@
 
   </div>
 </div>
+<%= form_with url: store_tasks_users_path do |f| %>
+    <div class="timeform">
+      <%= f.input @tasks.ids, label: "",
+      required: false, as: :check_boxes, input_html: {class: "checkboxes"}, item_wrapper_class: 'tick',
+      collection: @tasks,
+      label_method: lambda {|task| "<a href=\'#{task.url}\' target=\_blank\'>#{task.name}:&nbsp;#{task.content} <b><br>".html_safe } %>
+    </div>
+    <div class="save">
+      <%= f.submit "Save", class: "save-button"%>
+    </div>
+  <% end %>
 
 
 
