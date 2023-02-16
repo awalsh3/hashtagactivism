@@ -1,3 +1,4 @@
+
 <div class="container p-4 m-4 outline-dashed">
   <div class="grid grid-cols-6 gap-4 outline-dotted">
 
@@ -17,9 +18,8 @@
           <div class="divide-y divide-gray-200 m-4 p-4 overflow-hidden rounded-lg bg-gray-200 shadow sm:grid sm:grid-cols-1 sm:gap-px sm:divide-y-0">
             <div class="rounded-tl-lg rounded-tr-lg sm:rounded-tr-none relative group bg-white p-6 focus-within:ring-2 focus-within:ring-inset focus-within:ring-emerald-500">
               <div>
-                <!-- <span class="rounded-lg inline-flex p-3 bg-teal-50 text-teal-700 ring-4 ring-white"> -->
+                <%# checkbox selected? task_ids << task.id %>
                   <input type="checkbox" class="h-8 w-8 rounded border-gray-300 text-emerald-600 focus:ring-emerald-500">
-                <!-- </span> -->
               </div>
               <div class="mt-8">
                 <h3 class="text-lg font-medium">
@@ -71,28 +71,15 @@
         </ul>
       </div>
 
-
-
+  </div>
     <div class="col-start-1 col-end-7 outline-dashed">
        <div class="container p-2 m-2">
         <%= link_to "Go back", cause_path(@cause), class: "inline-flex items-center rounded-md border border-transparent bg-emerald-300 px-8 py-3 text-base font-medium text-white hover:bg-emerald-400 md:py-4 md:px-10 md:text-lg" %>
       </div>
     </div>
-
-  </div>
 </div>
-<%= form_with url: store_tasks_users_path do |f| %>
-    <div class="timeform">
-      <%= f.input @tasks.ids, label: "",
-      required: false, as: :check_boxes, input_html: {class: "checkboxes"}, item_wrapper_class: 'tick',
-      collection: @tasks,
-      label_method: lambda {|task| "<a href=\'#{task.url}\' target=\_blank\'>#{task.name}:&nbsp;#{task.content} <b><br>".html_safe } %>
-    </div>
-    <div class="save">
-      <%= f.submit "Save", class: "save-button"%>
-    </div>
-  <% end %>
 
+<%= render 'shared/tasks_form' %>
 
 
 

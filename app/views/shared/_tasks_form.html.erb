@@ -1,0 +1,10 @@
+<% task_ids = [] %>
+<% task_ids << @cause.tasks.first  %>
+<%= form_for :store_tasks, url: store_tasks_users_path do |form| %>
+  <%= form.check_box :task_ids %>
+  <%#= form.label :task_name, "#{task.name}" %>
+  <div class="container p-2 m-2">
+    <%= form.submit 'Save', class: "inline-flex items-center rounded-md border border-transparent bg-emerald-300 px-8 py-3 text-base font-medium text-white hover:bg-emerald-400 md:py-4 md:px-10 md:text-lg" %>
+  </div>
+
+<% end %>
