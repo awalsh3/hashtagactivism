@@ -7,6 +7,12 @@ Cause.destroy_all
 
 puts 'Seed: Seeding...'
 
+user1 = User.create(
+  name: 'Annie Walsh',
+  email: '123@gmail.com',
+  password: '12345678'
+  )
+
 
 cause1 = Cause.create!(
   name: '#blacklivesmatter',
