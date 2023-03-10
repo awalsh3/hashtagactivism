@@ -51,6 +51,8 @@ gem "cloudinary"
 
 gem "devise"
 
+gem "rubocop"
+
 # Use Sass to process CSS
 # gem "sassc-rails"
 
