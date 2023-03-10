@@ -20,6 +20,7 @@
     </div>
   </div>
   <div class="hidden md:ml-10 md:block md:space-x-8 md:pr-4">
+
     <%= link_to "How it works", how_it_works_path, class: "font-medium text-gray-500 hover:text-gray-900" %>
 
     <%= link_to "Causes", causes_path, class: "font-medium text-gray-500 hover:text-gray-900" %>
@@ -28,7 +29,12 @@
 
     <a href="#" class="font-medium text-gray-500 hover:text-gray-900">Get Involved</a>
 
-    <a href="#" class="font-medium text-emerald-300 hover:text-emerald-200">Log in</a>
+    <%= link_to "Log out", destroy_user_session_path, data: {turbo_method: :delete},
+    class: "font-medium text-emerald-300 hover:text-emerald-200" %>
+
+    <%= link_to "Sign in", new_user_session_path,
+    class: "font-medium text-emerald-300 hover:text-emerald-200" %>
+
   </div>
 </nav>
 </div>

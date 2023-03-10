@@ -1,7 +1,12 @@
 Rails.application.routes.draw do
-  # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
+  devise_for :users
+  resources :users do
+      collection do
+        get "dashboard"
+        post "store_tasks"
+      end
+    end
 
-  # Defines the root path route ("/")
   root "pages#home"
   get "about", to: "pages#about"
   get "how_it_works", to: "pages#how_it_works"
