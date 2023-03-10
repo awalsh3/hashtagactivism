@@ -1,6 +1,8 @@
 Rails.application.routes.draw do
   devise_for :users
   resources :users do
+    resources :actions, only: [ :index, :show, :create ] do
+          end
       collection do
         get "dashboard"
         post "store_tasks"

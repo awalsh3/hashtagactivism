@@ -137,4 +137,10 @@ task16 = Task.create!(
   url: 'https://www.bigblueoceancleanup.org/become-an-ocean-activist'
 )
 
+action1 = Action.create(
+  user_id: user1.id,
+  task_id: task1.id,
+  completed: true
+  )
+
 puts 'Seed: Finished seeding!'
