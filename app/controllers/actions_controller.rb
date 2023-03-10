@@ -14,10 +14,10 @@ class ActionsController < ApplicationController
     @action = Action.create(task_id: @task.id, user_id: current_user.id, completed: true)
   end
 
-private
-  def set_user
-    @user = current_user
-  end
+  private
+    def set_user
+      @user = current_user
+    end
 
   # def set_task
   #   @task = Task.find(params[:task_id])
