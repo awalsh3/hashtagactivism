@@ -11,12 +11,13 @@
 
     <div class="col-start-1 col-end-4 outline-dashed">
      <!----- Task filter ------->
-      <%#= render "shared/task_filter" %>
+      <%= render "shared/task_filter" %>
     <!----- Task filter ------->
+
       <%= form_with url: add_tasks_user_path(current_user), method: :post do |form| %>
       <div class="bg-white p-2 outline-dashed">
         <div class="mx-auto max-w-2xl text-left outline-dashed">
-          <% @cause.tasks.each do |task| %>
+          <% @tasks.each do |task| %>
             <div class="divide-y divide-gray-200 m-4 p-4 overflow-hidden rounded-lg bg-gray-200 shadow sm:grid sm:grid-cols-1 sm:gap-px sm:divide-y-0">
               <div class="rounded-tl-lg rounded-tr-lg sm:rounded-tr-none relative group bg-white p-6 focus-within:ring-2 focus-within:ring-inset focus-within:ring-emerald-500">
                 <div>
