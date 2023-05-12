@@ -1,92 +1,29 @@
-  <%= form_with url: cause_tasks_path(@cause), method: :get do |form| %>
+<%= form_with url: cause_tasks_path(@cause), method: :get do |form| %>
   <fieldset>
-    <legend class="block font-medium">Time</legend>
     <div class="space-y-6 pt-6 sm:space-y-4 sm:pt-4">
       <div class="flex items-center text-base sm:text-sm">
-        <%= radio_button_tag 'max_time', 5 %>
-        <%= label_tag 'max_time_5', '5 minutes', class: "ml-3 min-w-0 flex-1 text-gray-600" %>
-      </div>
-
-      <div class="flex items-center text-base sm:text-sm">
-        <%= radio_button_tag 'max_time', 10 %>
-        <%= label_tag 'max_time_10', '10 minutes', class: "ml-3 min-w-0 flex-1 text-gray-600" %>
-      </div>
-
-      <div class="flex items-center text-base sm:text-sm">
-        <%= radio_button_tag 'max_time', 30 %>
-        <%= label_tag 'max_time_30', '30 minutes', class: "ml-3 min-w-0 flex-1 text-gray-600" %>
-      </div>
-
-      <div class="flex items-center text-base sm:text-sm">
-        <%= radio_button_tag 'max_time', 60 %>
-        <%= label_tag 'max_time_60', '60 minutes', class: "ml-3 min-w-0 flex-1 text-gray-600" %>
+        <select name="max_time" id="max_time" class="w-full rounded-md border-0 bg-white py-1.5 pl-3 pr-12 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6">
+          <option value="5">5 minutes</option>
+          <option value="10">10 minutes</option>
+          <option value="30">30 minutes</option>
+          <option value="60">60 minutes</option>
+        </select>
       </div>
     </div>
   </fieldset>
-   <div class="relative col-start-1 row-start-1 py-4">
-     <div class="mx-auto flex max-w-7xl space-x-6 divide-x divide-gray-200 px-4 text-sm sm:px-6 lg:px-8">
-       <button type="button" class="group flex items-center font-medium text-gray-700" aria-controls="disclosure-1" aria-expanded="false">
-          <!-- Heroicon name: mini/funnel -->
-          <svg class="mr-2 h-5 w-5 flex-none text-gray-400 group-hover:text-gray-500" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
-            <path fill-rule="evenodd" d="M2.628 1.601C5.028 1.206 7.49 1 10 1s4.973.206 7.372.601a.75.75 0 01.628.74v2.288a2.25 2.25 0 01-.659 1.59l-4.682 4.683a2.25 2.25 0 00-.659 1.59v3.037c0 .684-.31 1.33-.844 1.757l-1.937 1.55A.75.75 0 018 18.25v-5.757a2.25 2.25 0 00-.659-1.591L2.659 6.22A2.25 2.25 0 012 4.629V2.34a.75.75 0 01.628-.74z" clip-rule="evenodd" />
-          </svg>
-           <%= form.submit 'Filter by time' %>
+
+    <div class="relative col-start-1 row-start-1 py-4">
+    <div class="mx-auto flex max-w-7xl space-x-6 divide-x divide-gray-200 px-4 text-sm sm:px-6 lg:px-8">
+      <button type="submit" class="group flex items-center font-medium text-gray-700" aria-controls="disclosure-1" aria-expanded="false">
+         <!-- Heroicon name: mini/funnel -->
+         <svg class="mr-2 h-5 w-5 flex-none text-gray-400 group-hover:text-gray-500" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
+           <path fill-rule="evenodd" d="M2.628 1.601C5.028 1.206 7.49 1 10 1s4.973.206 7.372.601a.75.75 0 01.628.74v2.288a2.25 2.25 0 01-.659 1.59l-4.682 4.683a2.25 2.25 0 00-.659 1.59v3.037c0 .684-.31 1.33-.844 1.757l-1.937 1.55A.75.75 0 018 18.25v-5.757a2.25 2.25 0 00-.659-1.591L2.659 6.22A2.25 2.25 0 012 4.629V2.34a.75.75 0 01.628-.74z" clip-rule="evenodd" />
+         </svg>
+         <%= form.submit 'Filter by time' %>
       </button>
-       <div class="pl-6">
-         <button type="button" class="text-gray-500">Clear all</button>
-       </div>
-    </div>
+      <div class="pl-6">
+        <button type="button" class="text-gray-500">Clear all</button>
+      </div>
+   </div>
   </div>
 <% end %>
-
-<!-- Filters -->
-  <!-- section aria-labelledby="filter-heading" class="grid items-center border-t border-b border-gray-200">
-    <h2 id="filter-heading" class="sr-only">Filters</h2>
-    <div class="relative col-start-1 row-start-1 py-4">
-      <div class="mx-auto flex max-w-7xl space-x-6 divide-x divide-gray-200 px-4 text-sm sm:px-6 lg:px-8">
-        <div>
-          <button type="button" class="group flex items-center font-medium text-gray-700" aria-controls="disclosure-1" aria-expanded="false">
-            <svg class="mr-2 h-5 w-5 flex-none text-gray-400 group-hover:text-gray-500" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
-              <path fill-rule="evenodd" d="M2.628 1.601C5.028 1.206 7.49 1 10 1s4.973.206 7.372.601a.75.75 0 01.628.74v2.288a2.25 2.25 0 01-.659 1.59l-4.682 4.683a2.25 2.25 0 00-.659 1.59v3.037c0 .684-.31 1.33-.844 1.757l-1.937 1.55A.75.75 0 018 18.25v-5.757a2.25 2.25 0 00-.659-1.591L2.659 6.22A2.25 2.25 0 012 4.629V2.34a.75.75 0 01.628-.74z" clip-rule="evenodd" />
-            </svg>
-             Filter by time
-          </button>
-        </div>
-        <div class="pl-6">
-          <button type="button" class="text-gray-500">Clear all</button>
-        </div>
-      </div>
-    </div>
-    <div class="border-t border-gray-200 py-10" id="disclosure-1">
-      <div class="mx-auto grid max-w-7xl grid-cols-2 gap-x-4 px-4 text-sm sm:px-6 md:gap-x-6 lg:px-8">
-        <div class="grid auto-rows-min grid-cols-1 gap-y-10 md:grid-cols-2 md:gap-x-6">
-          <fieldset>
-            <legend class="block font-medium">Time</legend>
-            <div class="space-y-6 pt-6 sm:space-y-4 sm:pt-4">
-              <div class="flex items-center text-base sm:text-sm">
-                <input id="price-0" name="price[]" value="0" type="checkbox" class="h-4 w-4 flex-shrink-0 rounded border-gray-300 text-emerald-600 focus:ring-emerald-500">
-                <label for="price-0" class="ml-3 min-w-0 flex-1 text-gray-600">5 minutes</label>
-              </div>
-
-              <div class="flex items-center text-base sm:text-sm">
-                <input id="price-1" name="price[]" value="25" type="checkbox" class="h-4 w-4 flex-shrink-0 rounded border-gray-300 text-emerald-600 focus:ring-emerald-500">
-                <label for="price-1" class="ml-3 min-w-0 flex-1 text-gray-600">10 minutes</label>
-              </div>
-
-              <div class="flex items-center text-base sm:text-sm">
-                <input id="price-2" name="price[]" value="50" type="checkbox" class="h-4 w-4 flex-shrink-0 rounded border-gray-300 text-emerald-600 focus:ring-emerald-500">
-                <label for="price-2" class="ml-3 min-w-0 flex-1 text-gray-600">30 minutes</label>
-              </div>
-
-              <div class="flex items-center text-base sm:text-sm">
-                <input id="price-3" name="price[]" value="75" type="checkbox" class="h-4 w-4 flex-shrink-0 rounded border-gray-300 text-emerald-600 focus:ring-emerald-500">
-                <label for="price-3" class="ml-3 min-w-0 flex-1 text-gray-600">60 minutes</label>
-              </div>
-            </div>
-          </fieldset>
-        </div>
-        </div>
-      </div>
-  </section> -->
-
-
