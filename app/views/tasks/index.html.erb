@@ -10,18 +10,20 @@
     </div>
 
     <div class="col-start-1 col-end-4 outline-dashed">
-        <%= render "shared/task_filter" %>
-
+     <!----- Task filter ------->
+      <%#= render "shared/task_filter" %>
+    <!----- Task filter ------->
+      <%= form_with url: add_tasks_user_path(current_user), method: :post do |form| %>
       <div class="bg-white p-2 outline-dashed">
         <div class="mx-auto max-w-2xl text-left outline-dashed">
           <% @cause.tasks.each do |task| %>
-          <div class="divide-y divide-gray-200 m-4 p-4 overflow-hidden rounded-lg bg-gray-200 shadow sm:grid sm:grid-cols-1 sm:gap-px sm:divide-y-0">
-            <div class="rounded-tl-lg rounded-tr-lg sm:rounded-tr-none relative group bg-white p-6 focus-within:ring-2 focus-within:ring-inset focus-within:ring-emerald-500">
-              <div>
-                <%# checkbox selected? task_ids << task.id %>
-                  <input type="checkbox" class="h-8 w-8 rounded border-gray-300 text-emerald-600 focus:ring-emerald-500">
-              </div>
-              <div class="mt-8">
+            <div class="divide-y divide-gray-200 m-4 p-4 overflow-hidden rounded-lg bg-gray-200 shadow sm:grid sm:grid-cols-1 sm:gap-px sm:divide-y-0">
+              <div class="rounded-tl-lg rounded-tr-lg sm:rounded-tr-none relative group bg-white p-6 focus-within:ring-2 focus-within:ring-inset focus-within:ring-emerald-500">
+                <div>
+                  <%= check_box_tag 'task_ids[]', task.id, false, class: "h-8 w-8 rounded border-gray-300 text-emerald-600 focus:ring-emerald-500" %>
+                </div>
+                <!-- The rest of your code here -->
+                <div class="mt-8">
                 <h3 class="text-lg font-medium">
                     <!-- Extend touch target to entire panel -->
                     <!-- <span class="absolute inset-0" aria-hidden="true"></span> -->
@@ -39,19 +41,15 @@
               <% end %>
               </span>
 
+              </div>
             </div>
-            <!---- FORM FOR collecting task ids --->
-            <%= form_for :store_tasks, url: store_tasks_users_path do |form| %>
-              <%= form.text_field :task_ids %>
-                <div class="container p-2 m-2">
-                  <%= form.submit 'Save', class: "inline-flex items-center rounded-md border border-transparent bg-emerald-300 px-8 py-3 text-base font-medium text-white hover:bg-emerald-400 md:py-4 md:px-10 md:text-lg" %>
-                </div>
-              <% end %>
-              <!---- FORM FOR collecting task ids --->
-          </div>
           <% end %>
+          <div class="container p-2 m-2">
+            <%= form.submit 'Save', class: "inline-flex items-center rounded-md border border-transparent bg-emerald-300 px-8 py-3 text-base font-medium text-white hover:bg-emerald-400 md:py-4 md:px-10 md:text-lg" %>
+          </div>
         </div>
-    </div>
+      </div>
+    <% end %>
   </div>
 
 
@@ -87,7 +85,6 @@
     </div>
 </div>
 
-<%= render 'shared/tasks_form' %>
 
 
 
