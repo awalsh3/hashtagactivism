@@ -3,9 +3,10 @@
 
 puts 'Seed: Deleting existing records...'
 
-Cause.destroy_all
+
 Task.destroy_all
 Organization.destroy_all
+Cause.destroy_all
 
 
 puts 'Seed: Seeding...'
@@ -142,6 +143,15 @@ task16 = Task.create!(
 
 org1 = Organization.create!(
   name: 'Black Lives Matter',
+  url: 'https://blacklivesmatter.com/',
+  blurb: 'Provides detailed information about the movement, its history, goals, and ways to get involved.',
+  cause_id: cause1.id
+)
+
+org2 = Organization.create!(
+  name: 'African American Policy Forum',
+  url: 'https://aapf.org',
+  blurb: "The African American Policy Forum is a social justice think tank focused on issues of gender and diversity.",
   cause_id: cause1.id
 )
 
