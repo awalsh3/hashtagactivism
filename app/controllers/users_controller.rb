@@ -1,15 +1,13 @@
 class UsersController < ApplicationController
+  def add_tasks
+    @user = User.find(params[:id])
+    tasks = Task.where(id: params[:task_ids])
 
-  def store_tasks
-    # params[:task_ids].reject(&:blank?).each do |id|
-      action = Action.create(task_id: id, user_id: current_user.id, completed: true)
-      if action.sucess?
-        flash.now = "succes!"
-      else
-        flash.now = "no sucess"
-      end
-    # end
+    tasks.each do |task|
+      @user.tasks << task unless @user.tasks.include?(task)
+    end
 
+    redirect_to @user, notice: "Tasks have been added successfully."
   end
 
   private

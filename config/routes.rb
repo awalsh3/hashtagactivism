@@ -1,11 +1,9 @@
 Rails.application.routes.draw do
   devise_for :users
+
   resources :users do
-      collection do
-        get "dashboard"
-        post "store_tasks"
-      end
-    end
+    post 'add_tasks', on: :member
+  end
 
   root "pages#home"
   get "about", to: "pages#about"
