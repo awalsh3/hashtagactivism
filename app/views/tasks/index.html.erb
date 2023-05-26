@@ -55,13 +55,46 @@
 
 
 
-    <div class="col-end-7 col-span-3 ">
-     <div class="p-4 m-4">
+  <div class="col-end-7 col-span-3 ">
+   <div class="p-2 m-2 outline-dashed">
+        <% if @user.tasks.present? %>
+          <div class="p-2 m-2">
+            <h3 class="text-2xl text-center font-bold"> Completed Tasks </h3>
+           </div>
+          <div class="p-2 m-2">
+            <p><% @user.tasks.each do |task| %> <p>
+              <%= task.name if task.cause_id == @cause.id %>
+              <% end %>
+          </div>
+        <% else %>
+          <div class="p-2 m-2">
+            <ul>
+              <h3 class="text-2xl text-center font-bold p-2 m-2">
+              Completed tasks will appear here.
+              <br>What are you waiting for? Fill this blank space!
+              </h3>
+
+              <li>1. Filter tasks by time</li>
+              <li>2. Follow the link via the arrow to complete task on resourced website</li>
+              <li>3. Check the box once you complete the task</li>
+              <li>4. Scroll to the bottom of the list and hit save! </li>
+              <br>
+              <br>
+              <br>
+              <br>
+              <br>
+
+            </ul>
+          </div>
+        <% end %>
+      </div>
+
+    <div class="p-4 m-4">
       <%= cl_image_tag @cause.photo.key, :gravity=>"cld-decompose_tile", :crop=>"crop" %>
-     </div>
-     <div class="p-2 m-2">
+    </div>
+    <div class="p-2 m-2">
       <h3 class="text-2xl text-center font-bold"> Notable Organizations </h3>
-     </div>
+    </div>
       <div class="container p-4 m-2">
         <% @organizations.each do |org| %>
             <div class="divide-y divide-gray-200 m-4 p-4 overflow-hidden rounded-lg bg-white shadow sm:grid sm:grid-cols-1 sm:gap-px sm:divide-y-0">
@@ -84,11 +117,8 @@
               </div>
             </div>
           <% end %>
-
       </div>
-
   </div>
-
 
     <div class="col-start-7 col-end-7">
        <div class="container p-2 m-2">

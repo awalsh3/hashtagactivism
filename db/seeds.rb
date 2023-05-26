@@ -3,11 +3,10 @@
 
 puts 'Seed: Deleting existing records...'
 
-
+Action.destroy_all
 Task.destroy_all
 Organization.destroy_all
 Cause.destroy_all
-
 
 puts 'Seed: Seeding...'
 
@@ -17,6 +16,11 @@ user1 = User.create(
   password: '12345678'
   )
 
+user2 = User.create(
+  name: 'No Tasks Tammy',
+  email: '456@gmail.com',
+  password: '12345678'
+  )
 
 cause1 = Cause.create!(
   name: '#blacklivesmatter',

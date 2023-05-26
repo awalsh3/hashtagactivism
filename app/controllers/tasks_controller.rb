@@ -12,6 +12,7 @@ class TasksController < ApplicationController
     @cause = Cause.find(params[:cause_id])
     @tasks = @cause.tasks.order(time: :asc)
     @organizations = @cause.organizations
+    @user = current_user
     max_time = params[:max_time]
     if params[:max_time]
       @tasks = @tasks.where('time <= ?', max_time).order(time: :asc)
