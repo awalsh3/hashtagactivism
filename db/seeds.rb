@@ -4,6 +4,9 @@
 puts 'Seed: Deleting existing records...'
 
 Cause.destroy_all
+Task.destroy_all
+Organization.destroy_all
+
 
 puts 'Seed: Seeding...'
 
@@ -135,6 +138,11 @@ task16 = Task.create!(
   cause_id: cause2.id,
   time: 10,
   url: 'https://www.bigblueoceancleanup.org/become-an-ocean-activist'
+)
+
+org1 = Organization.create!(
+  name: 'Black Lives Matter',
+  cause_id: cause1.id
 )
 
 puts 'Seed: Finished seeding!'
