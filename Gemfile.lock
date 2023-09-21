@@ -157,7 +157,7 @@ GEM
     orm_adapter (0.5.0)
     pg (1.5.3)
     public_suffix (5.0.1)
-    puma (6.3.0)
+    puma (6.4.0)
       nio4r (~> 2.0)
     racc (1.7.1)
     rack (2.2.8)
@@ -270,7 +270,7 @@ DEPENDENCIES
   importmap-rails
   jbuilder
   pg (~> 1.5)
-  puma (~> 6.3)
+  puma (~> 6.4)
   rails (~> 7.0.6)
   redis (~> 5.0)
   selenium-webdriver
