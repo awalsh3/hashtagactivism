@@ -1,16 +1,39 @@
-<h2>Forgot your password?</h2>
-
 <%= form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :post }) do |f| %>
   <%= render "devise/shared/error_messages", resource: resource %>
+<main id="content" role="main" class="w-full  max-w-md mx-auto p-6">
+    <div class="mt-7 bg-white rounded-xl shadow-lg  border-2 border-emerald-300">
+      <div class="p-4 sm:p-7">
+        <div class="text-center">
+          <h1 class="block text-2xl font-title font-bold text-black dark:text-black">Forgot password?</h1>
+        </div>
 
-  <div class="field">
-    <%= f.label :email %><br />
-    <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
-  </div>
-
-  <div class="actions">
-    <%= f.submit "Send me reset password instructions" %>
-  </div>
-<% end %>
-
-<%= render "devise/shared/links" %>
+        <div class="mt-5">
+            <div class="grid gap-y-4">
+              <div>
+                <p class="hidden text-xs text-red-600 mt-2" id="email-error">Please include a valid email address so we can get back to you</p>
+              </div>
+               <div class="field block text-sm text-gray-600 font-medium ml-1 mb-2">
+                <%= f.label :email %><br />
+                <%= f.email_field :email, autofocus: true, autocomplete: "email", class: "py-3 px-4 block w-full border-2 border-gray-200 rounded-md text-sm focus:border-emerald-100 focus:ring-emerald-100 shadow-sm" %>
+              </div>
+               <div>
+                <button type="submit" class="group relative flex w-full justify-center rounded-md border border-transparent bg-emerald-300 py-2 px-4 text-sm font-medium text-white hover:bg-emerald-200 focus:outline-none focus:ring-2 focus:ring-emerald-500 focus:ring-offset-2">  
+                  <div class="actions">
+                    <%= f.submit "Reset password" %>
+                  </div>
+                </button>
+              </div>
+            </div>
+        </div>
+        <div class="flex">
+          <p class="mt-2 mr-2 text-sm text-gray-600">
+              Remember your password?
+          </p>
+          <p class="mt-2 text-emerald-300 text-sm hover:underline ">
+            <%= render "devise/shared/links" %>
+          </p>  
+        </div>
+      </div>    
+    </div>
+  </main>
+  <% end %>
