@@ -1,4 +1,4 @@
-<div class="p-2 m-2">
+<div class="p-4 m-4">
 <div class="overflow-hidden rounded-lg bg-white shadow">
   <h2 class="sr-only" id="profile-overview-title">Profile Overview</h2>
   <div class="bg-white p-6">
@@ -19,32 +19,55 @@
     </div>
   </div>
   <div class="grid grid-cols-1 divide-y divide-gray-200 border-t border-gray-200 bg-gray-50 sm:grid-cols-3 sm:divide-x sm:divide-y-0">
-    <div class="px-6 py-5 text-center text-sm font-medium">
-      <span class="text-gray-600">Task Time Tracker</span> <br>
-      <span class="text-gray-900">7 hours</span>
+    <div class="px-6 py-5 text-center text-sm">
+      <span class="font-title text-sm font-medium text-gray-500">Task Time Tracker</span> <br>
+      <span class="text-sm font-bold tracking-tight text-gray-900">7 hours</span>
     </div>
     <div class="px-6 py-5 text-center text-sm font-medium">
-      <span class="text-gray-600">Completed Tasks</span><br>
+      <span class="font-title text-base text-sm font-medium text-gray-500">Completed Tasks</span><br>
       <span class="text-gray-900"><%= @tasks.count %></span>
     </div>
     <div class="px-6 py-5 text-center text-sm font-medium">
-      <span class="text-gray-600">Causes</span><br>
+      <span class="font-title text-base text-sm font-medium text-gray-500">Causes</span><br>
       <span class="text-gray-900"><%= @causes.count %></span>
     </div>
   </div>
-</div>
-<!-- app/views/dashboard/index.html.erb -->
-<h1>Welcome to your Dashboard, <%= current_user.name %></h1>
 
-<h2>Your Causes</h2>
-<% @causes.each do |cause| %>
-  <p><%= cause.name %></p>
-  
-<% end %>
+<div class="flex min-h-full flex-col">
 
-<h2>Your Tasks</h2>
-<% @tasks.each do |task| %>
-  <p><%= task.name %></p>
-<% end %>
+  <!-- 3 column wrapper -->
+  <div class="mx-auto w-full max-w-7xl grow lg:flex xl:px-2">
+    <!-- Left sidebar & main wrapper -->
+    <div class="flex-1 xl:flex">
+      <div class="border-b border-gray-200 px-4 py-6 sm:px-6 lg:pl-8 xl:w-64 xl:shrink-0 xl:border-b-0 xl:border-r xl:pl-6">
+        <!-- Left column area -->
+        <div class="p-2 m-2">
+            <h1 class="font-title text-base font-medium text-gray-500">Recent Causes</h1>
+            <% @causes.each do |cause| %>
+            <div class="p-2 m-2">
+                <%= cl_image_tag cause.photo.key, class: "rounded-lg shadow-lg object-scale-down w-20 h-20", :gravity=>"cld-decompose_tile", :crop=>"crop" %>  
+            </div>
+            <% end %>
+        </div>
+      </div>
+
+      <div class="px-4 py-6 sm:px-6 lg:pl-8 xl:flex-1 xl:pl-6">
+        <div class="p-2 m-2">
+        <h1 class="font-title text-base font-medium text-gray-500">Your Tasks</h1>
+        <% @tasks.each do |task| %>
+        <p><%= task.name %></p>
+        <% end %>
+         </div>
+      </div>
+    </div>
+
+    <div class="shrink-0 border-t border-gray-200 px-4 py-6 sm:px-6 lg:w-96 lg:border-l lg:border-t-0 lg:pr-8 xl:pr-6">
+      <!-- Right column area -->
+      <h1 class="font-title text-base font-medium text-gray-500">In the News</h1>
+    </div>
+  </div>
 </div>
+</div>
+</div>
+
 
