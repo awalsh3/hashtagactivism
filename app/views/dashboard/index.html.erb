@@ -41,7 +41,9 @@
       <div class="border-b border-gray-200 px-4 py-6 sm:px-6 lg:pl-8 xl:w-64 xl:shrink-0 xl:border-b-0 xl:border-r xl:pl-6">
         <!-- Left column area -->
         <div class="p-2 m-2">
-            <h1 class="font-title text-base font-medium text-gray-500">Recent Causes</h1>
+             <div class="border-b border-gray-200 pb-5">
+        <h1 class="font-title text-base font-medium text-gray-500">Recent Causes</h1>
+      </div>
             <% @causes.uniq { |cause| cause.id }.each do |cause| %>
             <div class="p-2 m-2">
                 <%= link_to cause_path(cause) do %>
@@ -62,7 +64,9 @@
 
       <div class="px-4 py-6 sm:px-6 lg:pl-8 xl:flex-1 xl:pl-6">
         <div class="p-2 m-2">
+         <div class="border-b border-gray-200 pb-5">
         <h1 class="font-title text-base font-medium text-gray-500">Your Tasks</h1>
+      </div>
         <% @tasks.each do |task| %>
           <div class="mt-5", style="display: flex; align-items: center;">
           <svg class="h-5 w-5 pr-2" viewBox="0 0 20 20" fill="#6EE7B7" aria-hidden="true">
@@ -71,13 +75,15 @@
         <p class="text-sm text-gray-500"><%= task.name %></p>
          </div>
         <% end %>
-         </div>
-      </div>
+         </div>         
+    </div>
     </div>
 
     <div class="shrink-0 border-t border-gray-200 px-4 py-6 sm:px-6 lg:w-96 lg:border-l lg:border-t-0 lg:pr-8 xl:pr-6">
       <!-- Right column area -->
-      <h1 class="font-title text-base font-medium text-gray-500">In the News</h1>
+      <div class="border-b border-gray-200 pb-5">
+        <h1 class="font-title text-base font-medium text-gray-500">In the News</h1>
+      </div>
     </div>
   </div>
 </div>
