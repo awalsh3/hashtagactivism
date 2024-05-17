@@ -1,5 +1,6 @@
-class CausesController < ApplicationController
+# frozen_string_literal: true
 
+class CausesController < ApplicationController
   def index
     @causes = Cause.all
     @time = 0
@@ -8,5 +9,4 @@ class CausesController < ApplicationController
   def show
     @cause = Cause.find(params[:id])
   end
-
 end
