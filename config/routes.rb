@@ -10,6 +10,7 @@ Rails.application.routes.draw do
   root 'pages#home'
   get 'about', to: 'pages#about'
   get 'how_it_works', to: 'pages#how_it_works'
+  get '/dashboard', to: 'dashboard#index'
 
   get '/causes/:id/choose_cause', to: 'causes#choose_cause', as: 'choose_cause'
   # get '/causes/:id/choose_time', to: 'causes#choose_time',as: 'choose_time'
